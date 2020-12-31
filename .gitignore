@@ -1,2 +1,4 @@
-venv/
-dist/
+/venv/
+/dist/
+/l298n_speed.egg-info/
+/build/
