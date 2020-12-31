@@ -1,27 +1,35 @@
-import RPi.GPIO as io
+import RPi.GPIO as GPIO
 
-class L298N():
-    """A class to control one side of an L298N dual H bridge motor driver."""
-    def __init__(self, in1, in2):
+class L298N:
+    """A class to control one side of an L298N dual H bridge motor driver with speed control."""
+    def __init__(self, ena, in1, in2):
         self.in1 = in1
         self.in2 = in2
-        all_pins = [self.in1, self.in2]
-        io.setmode(io.BCM)
-        io.setup(all_pins, io.OUT)
-        io.setwarnings(False)
+        self.ena = ena
+        all_pins = [self.ena, self.in1, self.in2]
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(all_pins, GPIO.OUT)
+        GPIO.setwarnings(False)
 
-    def forwards(self):
-        io.output(self.in1, 1)
-        io.output(self.in2, 0)
+    def forward(self, speed=100):
+        pwm = GPIO.PWM(self.ena, 800)
+        pwm.start(speed)
+        GPIO.output(self.in1, 1)
+        GPIO.output(self.in2, 0)
 
-    def backwards(self):
-        io.output(self.in1, 0)
-        io.output(self.in2, 1)
+    def backward(self, speed=100):
+        pwm = GPIO.PWM(self.ena, 800)
+        pwm.start(speed)
+        GPIO.output(self.in1, 0)
+        GPIO.output(self.in2, 1)
 
     def stop(self):
-        io.output(self.in1, 0)
-        io.output(self.in2, 0)
+        pwm = GPIO.PWM(self.ena, 800)
+        pwm.stop()
+        GPIO.output(self.ena, 0)
+        GPIO.output(self.in1, 0)
+        GPIO.output(self.in2, 0)
 
     def cleanup(self):
-        io.cleanup()
-        io.setmode(io.BCM)
+        GPIO.cleanup()
+        GPIO.setmode(GPIO.BCM)

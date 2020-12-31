@@ -4,14 +4,14 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="l298n",
+    name="l298n-speed",
     version="0.0.1",
-    author="Psuedohim",
-    author_email="8im8yhq1zatd@opayq.com",
-    description="A module to assist in controlling an L298N H-Bridge motor driver.",
+    author="Pascal Watteel",
+    author_email="pascal@watteelcom",
+    description="A module to assist in controlling an L298N H-Bridge motor driver including speed control via pwm.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/Psuedohim/l298n",
+    url="https://github.com/piwi3910/l298n-speed",
     packages=setuptools.find_packages(),
     classifiers=(
         "Programming Language :: Python :: 3",

@@ -1,1 +1,1 @@
-name = "l298n"
+name = "l298n-speed"
