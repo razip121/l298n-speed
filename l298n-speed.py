@@ -1,7 +1,9 @@
 import RPi.GPIO as GPIO
 
+
 class L298N:
     """A class to control one side of an L298N dual H bridge motor driver with speed control."""
+
     def __init__(self, ena, in1, in2):
         self.in1 = in1
         self.in2 = in2

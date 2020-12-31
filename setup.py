@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="l298n-speed",
-    version="0.0.2",
+    version="0.0.3",
     author="Pascal Watteel",
     author_email="pascal@watteel.com",
     description="A module to assist in controlling an L298N H-Bridge motor driver including speed control via pwm.",
