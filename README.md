@@ -1,4 +1,4 @@
-# l298n-speed speed Module
+# l298n-speed Module
 This module is designed to be used with three GPIO pins on the Raspberry Pi.
 the enable pin sets the speed and the other two the direction
 
@@ -10,7 +10,7 @@ attributes are in following order: enable pin, pin 1, pin 2
 most l298n board name them: ena, in1, in2
 
 ```python
-from l298n-speed import l298n
+from l298n import l298n
 motor = l298n(1, 2, 3)
 ```
 
